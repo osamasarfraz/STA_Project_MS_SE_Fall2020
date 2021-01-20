@@ -20,7 +20,7 @@ namespace Danish_Osama_Anas_STAProject
         By selectCategoryBtn = By.ClassName("sf-with-ul");
         By selectProductBtn = By.ClassName("icon-th-list");
         By addToCartBtn = By.XPath("//div[@class='button-container col-xs-7 col-md-12']//a[@class='button ajax_add_to_cart_button btn btn-default']");
-        By goToCartBtn = By.XPath("//div[@class='button-container']//a[@class='btn btn-default button button-medium']");
+        By goToCartBtn = By.CssSelector("#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > a");
         By cartQuantityUpBtn = By.Id("cart_quantity_up_1_1_0_420195");
         By proceedToCheckOutBtn = By.XPath("//span[text()='Proceed to checkout']");
         #endregion
@@ -40,8 +40,10 @@ namespace Danish_Osama_Anas_STAProject
             Action_Click(selectProductBtn);
             ImplicitWait(milliseconds);
             Action_Click(addToCartBtn);
-            ImplicitWait(60);
+            Thread.Sleep(milliseconds);
+            ImplicitWait(180);
             Action_Click(goToCartBtn);
+            ImplicitWait(180);
             ScrollTo(500);
             ImplicitWait(180);
             Action_Click(cartQuantityUpBtn);
