@@ -59,7 +59,7 @@ namespace Danish_Osama_Anas_STAProject
             }
         }
 
-        public void Action_Click(By by)
+        public void MoveToBtnAndClick(By by)
         {
             try
             {
@@ -72,14 +72,6 @@ namespace Danish_Osama_Anas_STAProject
             {
                 log.Error(ex + "Clicked By Actions Lib Successfull");
             }
-        }
-
-        public void Replace_Word(string Replace)
-        {
-            string replace_string = Replace;
-            replace_string = replace_string.Replace(" ", "");
-            string rep_str = replace_string.ToUpper();
-            Thread.Sleep(2000);
         }
 
         public void OpenUrl(string url)
@@ -125,11 +117,5 @@ namespace Danish_Osama_Anas_STAProject
             image.SaveAsFile(ScreenShotName, ScreenshotImageFormat.Png);
         }
 
-        public void Page_scrolldown(By by)
-        {
-            IWebElement s = driver.FindElement(by);
-            IJavaScriptExecutor je = (IJavaScriptExecutor)driver;
-            je.ExecuteScript("arguments[0].scrollIntoView(true);", s);
-        }
     }
 }

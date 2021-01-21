@@ -9,6 +9,15 @@ namespace Danish_Osama_Anas_STAProject
 {
     class PurchaseCheckout : BaseClass
     {
+        #region Path Of ScreenShots
+        string path_loginPage = "./LoginScreen.png";
+        string path_loginSuccess = "./LoginSuccess.png";
+        string path_categoryScreen = "./category.png";
+        string path_cartPopUp = "./popUpCart.png";
+        string path_checkOut = "./checkOut.png";
+        string path_checkOutSuccess = "./checkOutSuccess.png";
+        string path_paymentSuccess = "./paymentSuccess.png";
+        #endregion
         #region All Elements ID's Initilizing form webpage
 
         int delay = (2000);
@@ -27,42 +36,53 @@ namespace Danish_Osama_Anas_STAProject
         By agreeCheckBox = By.Id("cgv");
         By payByBankBtn = By.CssSelector("#HOOK_PAYMENT > div:nth-child(1) > div > p > a");
         By confirmOrder = By.CssSelector("#cart_navigation > button");
+        By successMessage = By.CssSelector("#center_column > div > p > strong");
         #endregion
 
         public void CheckOutMethod(string url, string userEmail, string userPassword)
         {
             OpenUrl(url);
             ImplicitWait(delay);
-            Action_Click(goToLoginBtn);
+            MoveToBtnAndClick(goToLoginBtn);
             WriteLine(email, userEmail);
             WriteLine(password, userPassword);
-            Action_Click(submitBtn);
+            MoveToBtnAndClick(submitBtn);
+            Test_ScreenShot(path_loginPage);
             ImplicitWait(delay);
-            Action_Click(selectCategoryBtn);
+            Test_ScreenShot(path_loginSuccess);
+            MoveToBtnAndClick(selectCategoryBtn);
+            Test_ScreenShot(path_categoryScreen);
             ImplicitWait(delay);
             ScrollTo(820);
-            Action_Click(selectProductBtn);
+            MoveToBtnAndClick(selectProductBtn);
             ImplicitWait(delay);
-            Action_Click(addToCartBtn);
+            MoveToBtnAndClick(addToCartBtn);
+            Test_ScreenShot(path_cartPopUp);
             Thread.Sleep(delay);
             ImplicitWait(180);
-            Action_Click(goToCartBtn);
+            MoveToBtnAndClick(goToCartBtn);
+            Test_ScreenShot(path_checkOut);
             ImplicitWait(180);
             ScrollTo(500);
             ImplicitWait(180);
-            Action_Click(cartQuantityUpBtn);
-            Action_Click(proceedToCheckOutBtn);
+            MoveToBtnAndClick(cartQuantityUpBtn);
+            MoveToBtnAndClick(proceedToCheckOutBtn);
             ImplicitWait(delay);
-            Action_Click(proceedToCheckOutBtn);
+            MoveToBtnAndClick(proceedToCheckOutBtn);
+            Test_ScreenShot(path_checkOutSuccess);
             ImplicitWait(delay);
-            Action_Click(agreeCheckBox);
+            MoveToBtnAndClick(agreeCheckBox);
             ScrollTo(500);
             Thread.Sleep(delay);
-            Action_Click(shippingCheckOutBtn);
+            MoveToBtnAndClick(shippingCheckOutBtn);
             ImplicitWait(delay);
-            Action_Click(payByBankBtn);
+            MoveToBtnAndClick(payByBankBtn);
             ImplicitWait(delay);
-            Action_Click(confirmOrder);
+            MoveToBtnAndClick(confirmOrder);
+            Test_ScreenShot(path_paymentSuccess);
+            
+            ImplicitWait(delay);
+            Assert.AreEqual("Your order on My Store is complete.", driver.FindElement(successMessage).Text);
             Thread.Sleep(delay);
         }
     }
