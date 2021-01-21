@@ -11,7 +11,7 @@ namespace Danish_Osama_Anas_STAProject
     {
         #region All Elements ID's Initilizing form webpage
 
-        int milliseconds = (2000);
+        int delay = (2000);
         By goToLoginBtn = By.CssSelector("a[href='http://automationpractice.com/index.php?controller=my-account']");
 
         By email = By.Id("email");
@@ -23,24 +23,28 @@ namespace Danish_Osama_Anas_STAProject
         By goToCartBtn = By.CssSelector("#layer_cart > div.clearfix > div.layer_cart_cart.col-xs-12.col-md-6 > div.button-container > a");
         By cartQuantityUpBtn = By.Id("cart_quantity_up_1_1_0_420195");
         By proceedToCheckOutBtn = By.XPath("//span[text()='Proceed to checkout']");
+        By shippingCheckOutBtn = By.CssSelector("#form > p > button > span");
+        By agreeCheckBox = By.Id("cgv");
+        By payByBankBtn = By.CssSelector("#HOOK_PAYMENT > div:nth-child(1) > div > p > a");
+        By confirmOrder = By.CssSelector("#cart_navigation > button");
         #endregion
 
         public void CheckOutMethod(string url, string userEmail, string userPassword)
         {
             OpenUrl(url);
-            ImplicitWait(milliseconds);
+            ImplicitWait(delay);
             Action_Click(goToLoginBtn);
             WriteLine(email, userEmail);
             WriteLine(password, userPassword);
             Action_Click(submitBtn);
-            ImplicitWait(milliseconds);
+            ImplicitWait(delay);
             Action_Click(selectCategoryBtn);
-            ImplicitWait(milliseconds);
+            ImplicitWait(delay);
             ScrollTo(820);
             Action_Click(selectProductBtn);
-            ImplicitWait(milliseconds);
+            ImplicitWait(delay);
             Action_Click(addToCartBtn);
-            Thread.Sleep(milliseconds);
+            Thread.Sleep(delay);
             ImplicitWait(180);
             Action_Click(goToCartBtn);
             ImplicitWait(180);
@@ -48,10 +52,18 @@ namespace Danish_Osama_Anas_STAProject
             ImplicitWait(180);
             Action_Click(cartQuantityUpBtn);
             Action_Click(proceedToCheckOutBtn);
-            ImplicitWait(milliseconds);
+            ImplicitWait(delay);
             Action_Click(proceedToCheckOutBtn);
-            ImplicitWait(milliseconds);
-            ScrollTo(200);
+            ImplicitWait(delay);
+            Action_Click(agreeCheckBox);
+            ScrollTo(500);
+            Thread.Sleep(delay);
+            Action_Click(shippingCheckOutBtn);
+            ImplicitWait(delay);
+            Action_Click(payByBankBtn);
+            ImplicitWait(delay);
+            Action_Click(confirmOrder);
+            Thread.Sleep(delay);
         }
     }
 }
