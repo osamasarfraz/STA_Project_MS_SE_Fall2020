@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using System.Configuration;
-using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Interactions;
 using System.Threading;
 

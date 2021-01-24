@@ -52,12 +52,12 @@ namespace Danish_Osama_Anas_STAProject
             string url = this.TestContext.DataRow["url"].ToString();
             string userEmail = this.TestContext.DataRow["userName"].ToString();
             string userPassword = this.TestContext.DataRow["userPassword"].ToString();
-            //string successMsg = this.TestContext.DataRow["successMessage"].ToString();
+            string checkOutSuccessMsg = this.TestContext.DataRow["successMessage"].ToString();
             #endregion
 
             PurchaseCheckout purchaseCheckout = new PurchaseCheckout();
 
-            purchaseCheckout.CheckOutMethod(url, userEmail, userPassword);
+            purchaseCheckout.CheckOutMethod(url, userEmail, userPassword, checkOutSuccessMsg);
         }
     }
 }

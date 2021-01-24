@@ -8,6 +8,7 @@
        <!--<message>Invalid Login details or Your Password might have expired. </message>
       <locator>auth_error</locator>--> 
       <message>Welcome to your account. Here you can manage all of your personal information and orders.</message>
+      <successMessage>Your order on My Store is complete.</successMessage>
       <locator>info-account</locator>
     </Login>
     <!--<Login>

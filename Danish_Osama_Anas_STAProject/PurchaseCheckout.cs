@@ -39,7 +39,7 @@ namespace Danish_Osama_Anas_STAProject
         By successMessage = By.CssSelector("#center_column > div > p > strong");
         #endregion
 
-        public void CheckOutMethod(string url, string userEmail, string userPassword)
+        public void CheckOutMethod(string url, string userEmail, string userPassword, string purchasedMsg)
         {
             OpenUrl(url);
             ImplicitWait(delay);
@@ -82,7 +82,7 @@ namespace Danish_Osama_Anas_STAProject
             Test_ScreenShot(path_paymentSuccess);
             
             ImplicitWait(delay);
-            Assert.AreEqual("Your order on My Store is complete.", driver.FindElement(successMessage).Text);
+            Assert.AreEqual(purchasedMsg, driver.FindElement(successMessage).Text);
             Thread.Sleep(delay);
         }
     }
