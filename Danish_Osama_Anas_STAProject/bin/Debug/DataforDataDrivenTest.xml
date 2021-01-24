@@ -2,21 +2,18 @@
 <Automation>
   <Execution>
     <Login>
-      <url>http://automationpractice.com/index.php</url>
-      <userName>sp15bs0062@maju.edu.pk</userName>
-      <userPassword>12345678</userPassword>
-       <!--<message>Invalid Login details or Your Password might have expired. </message>
-      <locator>auth_error</locator>--> 
-      <message>Welcome to your account. Here you can manage all of your personal information and orders.</message>
-      <successMessage>Your order on My Store is complete.</successMessage>
-      <locator>info-account</locator>
-    </Login>
-    <!--<Login>
       <userName>Danish</userName>
       <userPassword>123jhdas12</userPassword>
       <message>There is 1 error</message>
-      <locator>alert alert-danger</locator>
-    </Login>-->
+      <successMessage>Your order on My Store is complete.</successMessage>
+    </Login>
+    <Login>
+      <userName>sp15bs0062@maju.edu.pk</userName>
+      <userPassword>12345678</userPassword>
+      <message>Welcome to your account. Here you can manage all of your personal information and orders.</message>
+      <successMessage>Your order on My Store is complete.</successMessage>
+    </Login>
+    
   </Execution>
   
 </Automation>

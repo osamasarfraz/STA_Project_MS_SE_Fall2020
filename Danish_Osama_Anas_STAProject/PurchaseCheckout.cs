@@ -26,6 +26,8 @@ namespace Danish_Osama_Anas_STAProject
         By email = By.Id("email");
         By password = By.Id("passwd");
         By submitBtn = By.Id("SubmitLogin");
+        By welcomeMsg = By.CssSelector("#center_column > p");
+        By errorMsg = By.CssSelector("#center_column > div.alert.alert-danger > p");
         By selectCategoryBtn = By.ClassName("sf-with-ul");
         By selectProductBtn = By.ClassName("icon-th-list");
         By addToCartBtn = By.XPath("//div[@class='button-container col-xs-7 col-md-12']//a[@class='button ajax_add_to_cart_button btn btn-default']");
@@ -39,9 +41,9 @@ namespace Danish_Osama_Anas_STAProject
         By successMessage = By.CssSelector("#center_column > div > p > strong");
         #endregion
 
-        public void CheckOutMethod(string url, string userEmail, string userPassword, string purchasedMsg)
+        public void CheckOutMethod(string userEmail, string userPassword, string msg, string purchasedMsg)
         {
-            OpenUrl(url);
+            OpenUrl(AUTConstants.url);
             ImplicitWait(delay);
             MoveToBtnAndClick(goToLoginBtn);
             WriteLine(email, userEmail);
@@ -49,6 +51,15 @@ namespace Danish_Osama_Anas_STAProject
             MoveToBtnAndClick(submitBtn);
             Test_ScreenShot(path_loginPage);
             ImplicitWait(delay);
+            if (msg.Contains("Welcome"))
+            {
+                Assert.AreEqual(msg, driver.FindElement(welcomeMsg).Text);
+            }
+            else
+            {
+                Assert.AreEqual(msg, driver.FindElement(errorMsg).Text);
+                return;
+            }
             Test_ScreenShot(path_loginSuccess);
             MoveToBtnAndClick(selectCategoryBtn);
             Test_ScreenShot(path_categoryScreen);
@@ -80,7 +91,6 @@ namespace Danish_Osama_Anas_STAProject
             ImplicitWait(delay);
             MoveToBtnAndClick(confirmOrder);
             Test_ScreenShot(path_paymentSuccess);
-            
             ImplicitWait(delay);
             Assert.AreEqual(purchasedMsg, driver.FindElement(successMessage).Text);
             Thread.Sleep(delay);

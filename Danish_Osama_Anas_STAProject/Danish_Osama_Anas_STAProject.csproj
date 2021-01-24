@@ -61,6 +61,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AUTConstants.cs" />
     <Compile Include="BaseClass.cs" />
     <Compile Include="PurchaseCheckout.cs" />
     <Compile Include="TestExecution.cs" />
